@@ -31,8 +31,22 @@ class block_aspirelists extends block_base {
     $this->content =  new stdClass;
 	if ($COURSE->idnumber)
 	{
-		// get the code from the global course object, lowercasing it in the process
-		$code = strtolower($COURSE->idnumber);  
+        // Check if the course idnumber requires manipulation from the configuration.
+        $manipulation = get_config('aspirelists', 'manipulation');
+        $rule = get_config('aspirelists', 'rule');
+
+		// Format the code from the global course object based on manipulation method, lowercasing it in the process
+        switch ($manipulation) {
+            case 'truncate':
+                $code = strtolower(substr($COURSE->idnumber, $rule));
+                break;
+            case 'regexp':
+                $code = strtolower(preg_match($rule, $COURSE->idnumber));
+                break;
+            default:
+                $code = strtolower($COURSE->idnumber);
+        }
+
 		$url = "$site/$targetKG/$code/lists.json"; // build the target URL of the JSON data we'll be requesting from Aspire
 		// using php curl, we'll now request the JSON data from Aspire
 		$ch = curl_init();

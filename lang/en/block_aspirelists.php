@@ -13,11 +13,21 @@ $string['config_targetAspire_ex'] = 'http://demo.talisaspire.com';
 $string['config_kg'] = 'Target knowledge group';
 $string['config_kg_desc'] = 'Choose target knowledge grouping level you want to link at, e.g. course or module. This terminology should match that implemented in your Talis Aspire hierarchy.';
 $string['config_kg_ex'] = 'Default: modules';
+$string['config_manipulation'] = 'Manipulation method';
+$string['config_manipulation_desc'] = 'Choose a method to manipulate the Moodle course idnumber to map those in your Talis Aspire hierarchy.';
+$string['config_manipulation_ex'] = 'Default: none';
+$string['config_rule'] = 'Manipulation option';
+$string['config_rule_desc'] = 'Enter the rule to be applied, this should be an integer to truncate the string starting from zero 0, or a regular expression.';
+$string['config_rule_ex'] = 'Default: empty';
 
 $string['modules'] = 'Modules';
 $string['courses'] = 'Courses';
 $string['units'] = 'Units';
 $string['programmes'] = 'Programmes';
 $string['subjects'] = 'Subjects';
+
+$string['none'] = 'None';
+$string['regexp'] = 'Regular Expression';
+$string['truncate'] = 'Truncation';
 
 ?>

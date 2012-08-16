@@ -38,10 +38,11 @@ class block_aspirelists extends block_base {
 		// Format the code from the global course object based on manipulation method, lowercasing it in the process
         switch ($manipulation) {
             case 'truncate':
-                $code = strtolower(substr($COURSE->idnumber, $rule));
+                $code = strtolower(substr($COURSE->idnumber, 0, $rule));
                 break;
             case 'regexp':
-                $code = strtolower(preg_match($rule, $COURSE->idnumber));
+                preg_match($rule,$COURSE->idnumber,$matches);
+                $code = strtolower($matches[1]);
                 break;
             default:
                 $code = strtolower($COURSE->idnumber);
